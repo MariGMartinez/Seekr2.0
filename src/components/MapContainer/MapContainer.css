@@ -1,0 +1,12 @@
+ #map {
+     height: 300pt;
+     width: 500pt;
+ }
+ .maplist  {
+     position: relative;
+     top: 330px;
+ }
+ .searchBar {
+    position: relative;
+    top: 15px;
+ }

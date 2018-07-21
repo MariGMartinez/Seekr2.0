@@ -1,0 +1,13 @@
+#nav-mobile {
+    width: 45%;
+    background-color: #96b5c9;
+}
+.brand-logo {
+    font-family: 'Righteous', cursive;
+}
+.side-nav a {
+    font-family: 'Russo One', sans-serif;
+    color: #203542;
+    font-weight: bold;
+    font-size: 16px;
+}

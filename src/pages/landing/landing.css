@@ -1,0 +1,23 @@
+#centerInfo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+
+}
+#accountText {
+    text-align: center;
+    color: whitesmoke;
+    font-weight: bold;
+}
+#logo {
+    max-width: 100%;
+    min-width: 300px;
+    height: auto;
+}
+#landingBtn {
+    text-align: center;
+    
+}

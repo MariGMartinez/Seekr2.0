@@ -1,0 +1,26 @@
+#map {
+    height: 300pt;
+    width: 100% ;
+}
+#pos {
+    position: relative;
+}
+
+#start{
+    position: relative;
+    top: 55px;
+    left: 25px;
+}
+
+#end{
+    position: relative;
+    left: 225px;
+}
+
+#distance{
+    left: 500px;
+}
+
+#time{
+
+}

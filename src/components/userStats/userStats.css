@@ -1,0 +1,16 @@
+.card .card-content{
+    padding: 0px;
+}
+div.small.card {
+    height: 60%;
+    background-color: #869383;
+    width: 90%;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 0px;
+    border-radius: 10px;
+    -webkit-box-shadow: 14px 11px 54px -6px rgba(0,0,0,0.76);
+    -moz-box-shadow: 14px 11px 54px -6px rgba(0,0,0,0.76);
+    box-shadow: 14px 11px 54px -6px rgba(0,0,0,0.76);
+}

@@ -1,2 +1,3 @@
-# Seekr2.0
-Seekr Demo Day 
+# Seekr
+
+Time to seek your adventure!
