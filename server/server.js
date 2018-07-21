@@ -6,8 +6,9 @@ const routes = require('./routes')
 
 const app = express()
 var mongoose = require('mongoose')
+const db = require('./database/config/keys').mongoURI
 
-mongoose.connect('mongodb://localhost/dataDB')
+mongoose.connect(db)
 
 // Middleware
 app.use(bodyparser.urlencoded({ extended: true }))
