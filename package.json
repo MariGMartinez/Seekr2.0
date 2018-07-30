@@ -10,7 +10,8 @@
         "build": "cd client && npm run build",
         "deploy": "yarn build && git add . && git commit -m \"Building for production\" && git push heroku master",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "concurrently \"react-scripts start\" \"nodemon server/server.js\""
+        "dev": "concurrently \"react-scripts start\" \"nodemon server/server.js\"",
+        "heroku-postbuild": "cd client && yarn && yarn run build"
     },
     "author": "",
     "license": "ISC",
