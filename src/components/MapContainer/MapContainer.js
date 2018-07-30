@@ -257,6 +257,8 @@ export class MapContainer extends Component {
                                     length={trail.length}
                                     stars={trail.stars}
                                     conditionStatus={trail.conditionStatus}
+                                    longitude= {trail.longitude}
+                                    latitude= {trail.latitude}
                                     saved={this.saveTrail({
                                         name: trail.name,
                                         id: trail.id,
@@ -266,7 +268,9 @@ export class MapContainer extends Component {
                                         location: trail.location,
                                         length: trail.length,
                                         stars: trail.stars,
-                                        conditionStatus: trail.conditionStatus
+                                        conditionStatus: trail.conditionStatus,
+                                        longitude: trail.longitude,
+                                        latitude: trail.latitude
                                         })}
                                     position={{ lat: trail.latitude, lng: trail.longitude }}>
                                     
