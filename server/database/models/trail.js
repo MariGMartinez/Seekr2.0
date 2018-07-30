@@ -10,7 +10,7 @@ const trailSchema = new Schema({
   length: Number,
   conditionStatus: String,
   stars: Number,
-  latituge: Number,
+  latitude: Number,
   longitude: Number
 })
 
