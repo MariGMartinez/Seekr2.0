@@ -15,8 +15,10 @@ export class MapContainer extends Component {
     showingInfoWindow: false,
     activeMarker: {},
     selectedPlace: {},
-    lat: 38.21814737017803,
-    lng: -122.58098059051042,
+    endLat: 38.21814737017803,
+    endLng: -122.58098059051042,
+    startLat: 0,
+    startLng: 0,
     position: null,
     addressNum: "",
     city: "",
@@ -31,6 +33,7 @@ export class MapContainer extends Component {
       
       function setTime() {
         ++totalSeconds;
+        console.log(totalSeconds);
         secondsLabel.innerHTML = pad(totalSeconds % 60);
       }
       
@@ -60,8 +63,22 @@ export class MapContainer extends Component {
       .catch(err => console.log(err));
   };
   showCurrentPos = () => {
-    let lat = 33.68517198362942
-    let lng = -117.60496744519037
+    
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          console.log(position.coords.latitude);
+          console.log(position.coords.longitude);
+          this.setState({
+            startLat: position.coords.latitude,
+            startLng: position.coords.longitude
+          })
+        }
+      )
+    } else {
+      error => console.log(error)
+    }
+   
     /* navigator.geolocation.getCurrentPosition((position) => {
 
             lat= position.coords.latitude
@@ -70,7 +87,7 @@ export class MapContainer extends Component {
         //return this.setState({ lat: lat, lng: lng })
        
     }) */
-    this.setState({ lat: lat, lng: lng })
+    //this.setState({ lat: lat, lng: lng })
 
   }
 
@@ -100,6 +117,8 @@ export class MapContainer extends Component {
       height: '100vh'
     }
 
+    const { startLat, startLng} = this.state;
+
     return (
       <Row id="pos">
         <Col s={12} id="pos">
@@ -109,18 +128,17 @@ export class MapContainer extends Component {
             mapTypeId={this.satellite}
             zoom={17}
             onClick={this.mapClicked}
-            //centerAroundCurrentLocation={false}
-            center={{ lat: this.state.lat, lng: this.state.lng }}>
-
+            
+            center={{ lat: this.state.startLat, lng: this.state.startLng }}>
+            
             <Marker
               onClick={this.onMarkerClick}
               name={'Your current location'}
-              position={{ lat: this.state.lat, lng: this.state.lng }} />
-            <InfoWindow
-              marker={this.state.activeMarker}
-              visible={this.state.showingInfoWindow}>
-
-            </InfoWindow>
+              position={{ lat: startLat, lng: startLng }} />
+            <Marker 
+              onClick={this.onMarkerClick}
+              name={'The end location'}
+              position={{ lat: this.state.endLat, lng: this.state.endLng}}/>
           </Map>
           <Row id="pos">
             <Button className='red' waves='light' id='start' onClick={() => this.startHike()}>Start Hike</Button>
@@ -139,5 +157,5 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo'
+  apiKey: 'AIzaSyBOWlSKL22cnTlCyamBX-CpBHKu6DKt7qU'
 })(MapContainer)

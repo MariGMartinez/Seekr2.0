@@ -50,58 +50,75 @@ class Achievements extends Component{
             userId: sessionStorage.userId,
             userAc:[],
             user: "",
-            availableBadges: [ 
+            badges: [ 
                 { 
                     name: "Moderate Hike",
                     img: hotdogstick,
-                    color: "#464866",
+                    color: "white",
                     points: 15 ,
-                    miles: "4-7"
+                    miles: "4-7",
+                    earned: true
                 
                 },
                 {  
                     name: "Strenuous Hike-Killing it!", 
                     img: bear,
-                    color: "#464866",
+                    color: "white",
                     points: 20 ,
-                    miles: "7-12"
+                    miles: "7-12",
+                    earned: false
                 }, 
                 {
                      name: "Ultra Hike-More than a Conqueror!",
                      img: bearpaw,
-                     color: "#464866",
+                     color: "white",
                      points: 25,
-                     miles: "15-25"
+                     miles: "15-25",
+                     earned: false
                  },
                  {
                       name: "State Park Beauties",
                       img: map,
-                      color:"#464866",
+                      color:"white",
                       points: 30,
-                      miles: "25-40"
+                      miles: "25-40",
+                      earned: false
                  },  
                  { 
                      name: "National Park Hike",
                      img:compass,
-                     color: "#464866",
+                     color: "white",
                      points: 20 ,
-                     miles: "40-60"
-                } ],
-            earnedBadges: [  {
+                     miles: "40-60",
+                     earned: false
+                },
+                { 
+                    name: "Bike",
+                    img:bike,
+                    color: "white",
+                    points: 20 ,
+                    miles: "40-60",
+                    earned: false
+               },
+               {
                 name: "1st Hike-You did it!",
                 img: hikingboot,
-                color: "#D79922",
+                color: "white",
                 points: 5,
-                miles:"1"
+                miles:"1",
+                earned: false
             },
             {
                  name: "Easy Hike-Keep it up!",
                  img: backpack,
-                 color: "#D79922",
+                 color: "white",
                  points: 10 ,
-                 miles: "1-3"
-                 
+                 miles: "1-3",
+                 earned: false
             }
+            
+            ]
+            
         //     {
         //         name: "Man, that trip was in tents!",
         //         img: intents,
@@ -110,8 +127,8 @@ class Achievements extends Component{
         //         miles: "1-3"
                 
         //    }],
-        ],
-            toggle: true
+        //],
+        //    toggle: true
         }
         
     }
@@ -167,15 +184,16 @@ class Achievements extends Component{
             </div>
             <div >
                
-                { this.state.toggle ? <div style={{display: "grid", gridGap: "10px",  gridTemplateColumns: "repeat(1, 1fr)"}}>
-                    {this.state.earnedBadges.map((badge, index) => {
+                {  <div style={{display: "grid", gridGap: "10px",  gridTemplateColumns: "repeat(3, 3fr)"}}>
+                    {this.state.badges.map((badge, index) => {
                         return (
-                            <div style={{
+                            <div key={index} style={{
                                 alignSelf: "center",
                                 justifySelf: "center"}}>
-                                <div className="card">
-                                <div style={{width: "100px", height: "100px", backgroundColor: badge.color, margin:"0 auto", borderRadius:"100%"}}>
-                                    <div style={{position: "relative", marginLeft: "10px"}}>
+                                <div className="card" style={ badge.earned ? { backgroundImage: "linear-gradient(65deg, #00a8c5, #ffff7e)" , color: '#FcFcFc'} : { backgroundImage: 'white' }}>
+                                <div style={{width: "100px", height: "100px", backgroundColor: badge.color, 
+     margin:"0 auto", borderRadius:"100%"}}>
+                                    <div style={{position: "relative", marginLeft: "10px"}} >
                                         <img  className="size" src={badge.img}/>
                                     </div>
                                 </div>
@@ -186,22 +204,7 @@ class Achievements extends Component{
                             </div>
                        )
                     })}
-                </div> : <div style={{display: "grid", gridGap: "10px",  gridTemplateColumns: "repeat(1, 1fr)"}}> {this.state.availableBadges.map((badge, index) => {
-                        return (<div style={{
-                                alignSelf: "center",
-                                justifySelf: "center"}}>
-                                <div className="card">
-                                <div style={{width: "100px", height: "100px", backgroundColor: badge.color, margin:"0 auto", borderRadius:"100%"}}>
-                                <div style={{position: "relative", marginLeft: "10px"}}>
-                                    <img  className="size" src={badge.img}/>
-                                    </div>
-                                </div>
-                                <p>Achievement: {badge.name}</p>
-                                <p>Points {badge.points}</p>
-                                <p>Miles {badge.miles}</p>
-                                </div>
-                            </div>)
-                    })}</div> }
+                </div> }
             </div>
             {/*
             <img className="size" src={backpack}/>
